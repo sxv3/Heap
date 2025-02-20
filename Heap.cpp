@@ -52,7 +52,7 @@ void Heap::removeMax() {
     return;
   }
 
-  cout << heap[1] << endl; 
+  cout << heap[1] << " "; 
 	//last element is root
   heap[1] = heap[size--];
 	//restore heap
