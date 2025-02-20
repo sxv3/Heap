@@ -3,11 +3,15 @@
 #include <fstream>
 #include <cstring>
 
+//main.cpp file
+//by Tai Wong, Feb 19th
+
 using namespace std;
 
+//manages output and input
 void processInput(Heap &heap) {
   char choice[8];
-
+	//asks for input
   cout << "manual or file input? (manual/file): ";
   cin >> choice;
   
@@ -25,6 +29,7 @@ void processInput(Heap &heap) {
     int number;
     while (file >> number) {
       if (number >= 1 && number <= 1000) {
+	      //insert number into heap
 	heap.insert(number);
       } else {
 	cout << "bad number" << endl;
@@ -32,8 +37,8 @@ void processInput(Heap &heap) {
     }
 
     file.close();
-  } 
-  else if (strcmp(choice, "manual") == 0) {
+  } else if (strcmp(choice, "manual") == 0) {
+	  //insert manual numbers
     cout << "enter space seperated numbers, you can end by ctrl-D or non number character" << endl;
 
     int number;
@@ -50,12 +55,14 @@ void processInput(Heap &heap) {
 }
 
 int main() {
+	//makes heap, processes input
     Heap heap;
     processInput(heap);
 
+	//requirements of project
     cout << "heap representation\n";
     heap.printHeap();
-
+	
     cout << "removing elements in order:\n";
     heap.removeAll();
 
