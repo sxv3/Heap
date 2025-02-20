@@ -1,11 +1,17 @@
 #include "Heap.h"
 #include <fstream>
 
+//heap c++ file
+//created by Tai Wong
+//Feb 19th
+
+//heap constructor, makes empty heap
 Heap::Heap() {
   size = 0;
 }
 
-void Head::insert(int value) {
+//insert value into heap
+void Heap::insert(int value) {
   if (size >= 100) {
     cout << "heap is full" << endl;
     return;
@@ -14,30 +20,32 @@ void Head::insert(int value) {
   heapUp(size);
 }
 
+//bubble up
 void Heap::heapUp(int index) {
   while (index > 1 && heap[index] > heap[index / 2]) {
-    swap(heap[index], heap[index / 2]);
-    index /= 2;
+    swap(heap[index], heap[index / 2]); //swaps with parent
+    index /= 2; //move up in tree
   }
 }
 
+//bubble down
 void Heap::heapDown(int index) {
   while (index * 2 <= size) {
-    int largest = index * 2;
+    int largest = index * 2; //left child
     
     if (largest + 1 <= size && heap[largest + 1] > heap[largest]) {
-      largest++;
+      largest++; //right child is larger
     }
-	
+	//if heap is built properly 
     if (heap[index] >= heap[largest]) {
-      break;
+      break; 
     }
     
     swap(heap[index], heap[largest]);
     index = largest;
   }
 }
-
+//remove root
 void Heap::removeMax() {
   if (size == 0) {
     cout << "empty heap" << endl;
@@ -45,10 +53,12 @@ void Heap::removeMax() {
   }
 
   cout << heap[1] << " "; 
+	//last element is root
   heap[1] = heap[size--];
+	//restore heap
   heapDown(1);
 }
-
+//remove all elements
 void Heap::removeAll() {
   while (size > 0) {
     removeMax();
@@ -56,6 +66,7 @@ void Heap::removeAll() {
   cout << endl;
 }
 
+//recursive print function to show heap
 void Heap::utilPrint(int index, int depth) {
   if (index > size) {
     return;
@@ -71,16 +82,18 @@ void Heap::utilPrint(int index, int depth) {
   utilPrint(index * 2, depth + 1);
 }
 
+//display heap
 void Heap::printHeap() {
   utilPrint(1, 0);
 }
 
+//read file
 void Heap::fileRead(const char* filename) {
   ifstream file(filename);
   int number;
   while (file >> number) {
     if (number >= 1 && number <= 1000) {
-      insert(number);
+      insert(number); //insert into heap
     } else {
       cout << "bad number" << endl;
     }
