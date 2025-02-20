@@ -62,6 +62,10 @@ int main() {
 	//requirements of project
     cout << "heap representation\n";
     heap.printHeap();
+
+    cout << "remove individual element\n";
+    heap.removeMax();
+    heap.printHeap();
 	
     cout << "removing elements in order:\n";
     heap.removeAll();
