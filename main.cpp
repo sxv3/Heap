@@ -65,6 +65,7 @@ int main() {
 
     cout << "remove individual element\n";
     heap.removeMax();
+    cout << "new heap\n";
     heap.printHeap();
 	
     cout << "removing elements in order:\n";
