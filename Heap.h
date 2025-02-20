@@ -31,6 +31,6 @@ public:
 
   void fileRead(const char* filename); //read in file
   
-}
+};
 
-#endif HEAP_H
+#endif
